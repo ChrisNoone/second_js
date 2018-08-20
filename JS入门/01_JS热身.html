@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS热身</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .lis a {
+            display: block;
+            width: 60px;
+            height: 30px;
+            border: 1px solid black;
+            line-height: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
+
+        ul li {
+            position: relative;
+        }
+
+        .lis ul {
+            width: 60px;
+            border: 1px solid black;
+            background-color: lightyellow;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            display: none;
+        }
+
+        .lis ul li {
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li class="lis">
+            <a id="link" href="#">微博</a>
+            <ul id="ul1">
+                <li>头条</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+    function show(){
+        document.getElementById('ul1').style.display = "block";
+        document.getElementById('link').style.color = "blue";
+    }
+
+    function hide(){
+        document.getElementById('ul1').style.display = "none";
+    }
+
+    document.getElementById('link').onmouseover = show;
+    document.getElementById('link').onmouseout = hide;
+</script>
+</body>
+</html>
