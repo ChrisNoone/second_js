@@ -39,33 +39,35 @@
         }
 
         #hide_div {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.4);
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
             z-index: 2;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: none;
         }
 
         #set_div {
-            width: 330px;
-            height: 240px;
+            /*width: 330px;*/
+            /*height: 240px;*/
+            /*box-sizing: border-box;*/
+
+            width: 250px;
+            height: 170px;
+            background-color: #FFFFFF;
+            padding: 15px 20px;
+            border: 20px solid lightgray;
             position: absolute;
-            z-index: 3;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border: 20px solid lightgray;
-            background-color: #FFFFFF;
-            box-sizing: border-box;
-            padding: 15px 20px;
+            z-index: 3;
         }
 
         #set_div div {
             height: 40px;
-            box-sizing: border-box;
         }
 
         #set_div div p {
@@ -86,7 +88,6 @@
             height: 28px;
             margin: 5px 10px 5px 0;
             border: 1px solid gray;
-            /*margin-right: 10px;*/
             line-height: 28px;
             text-align: center;
         }
@@ -125,11 +126,8 @@
         }
 
         #set_div #btn_container {
-            width: 250px;
-            height: 50px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
             padding: 15px 50px 5px;
         }
 
@@ -137,10 +135,10 @@
             display: block;
             width: 70px;
             height: 30px;
+            background-color: #000099;
             border: 1px solid #000099;
             color: white;
             font-size: 14px;
-            background-color: #000099;
             float: left;
         }
 
@@ -148,10 +146,10 @@
             display: block;
             width: 70px;
             height: 30px;
+            background-color: #000099;
             border: 1px solid #000099;
             color: white;
             font-size: 14px;
-            background-color: #000099;
             float: right;
         }
     </style>
@@ -174,49 +172,49 @@
 
             oBtnSet.onclick = function () {
                 oHideDiv.style.display = "block";
-            }
+            };
 
             oBtnConfirm.onclick = function () {
                 oHideDiv.style.display = "none";
-            }
+            };
 
             oBtnReset.onclick = function () {
                 oShowDiv.style.width = "100px";
                 oShowDiv.style.height = "100px";
                 oShowDiv.style.backgroundColor = "transparent";
-            }
+            };
 
             oColorRed.onclick = function () {
                 oShowDiv.style.backgroundColor = "red";
-            }
+            };
 
             oColorYellow.onclick = function () {
                 oShowDiv.style.backgroundColor = "yellow";
-            }
+            };
 
             oColorBlue.onclick = function () {
                 oShowDiv.style.backgroundColor = "blue";
-            }
+            };
 
             oWidth200.onclick = function () {
                 oShowDiv.style.width = "200px";
-            }
+            };
 
             oWidth300.onclick = function () {
                 oShowDiv.style.width = "300px";
-            }
+            };
 
             oWidth400.onclick = function () {
                 oShowDiv.style.width = "400px";
-            }
+            };
 
             oHeight200.onclick = function () {
                 oShowDiv.style.height = "200px";
-            }
+            };
 
             oHeight300.onclick = function () {
                 oShowDiv.style.height = "300px";
-            }
+            };
 
             oHeight400.onclick = function () {
                 oShowDiv.style.height = "400px";
