@@ -8,32 +8,70 @@
             background-color: lightgray;
         }
 
-        #show {
+        #container {
             width: 300px;
             height: 300px;
             background-color: #ffffff;
             margin-bottom: 5px;
         }
+
+        .parent {
+            width: 100%;
+            height: 20px;
+        }
+
+        .parent input {
+            padding: 0;
+            margin: 0;
+            border: 1px solid black;
+            width: 20px;
+            height: 20px;
+            float: right;
+            margin-left: 5px;
+        }
     </style>
     <script>
-        window.onload = function (){
+        window.onload = function () {
             var oDivShow = document.getElementById("show");
             var oSpan = document.getElementById("name");
             var oText = document.getElementById("text");
             var oBtn = document.getElementById("btn");
+            var oPlus = document.getElementById("setplus");
+            var oMin = document.getElementById("setmin");
+            var num = 16;
 
-            oBtn.onclick = function (){
+            oBtn.onclick = function () {
                 oDivShow.innerHTML += oSpan.innerHTML + oText.value + "<br/>";
-                oText.innerHTML = "";
-            }
+                oText.value = "";
+            };
+
+            oPlus.onclick = function () {
+                num++;
+                oDivShow.style.fontSize = num + "px";
+            };
+
+            oMin.onclick = function () {
+                num--;
+                oDivShow.style.fontSize = num + "px";
+            };
         }
+    /*
+    *   节点发生变化后，节点事件会失效掉，需重新定义
+    *   document.getElementById 查找元素属性只能找内联元素属性，找不到内嵌和外联的属性
+    * */
     </script>
 </head>
 <body>
-<div id="show"></div>
-<div class="container">
-    <span id="name">超超：</span>
-    <input id="text" type="text" placeholder=""/>
+<div id="container">
+    <div class="parent">
+        <input id ="setplus" type="button" value="+"/>
+        <input id ="setmin" type="button" value="-"/>
+    </div>
+    <div id="show"></div>
+</div>
+<div class="form">
+    <label id="name" for="text">超超：</label>
+    <input id="text" type="text"/>
     <input id="btn" type="button" value="发送"/>
 </div>
 </body>
