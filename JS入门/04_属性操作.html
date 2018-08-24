@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>属性操作</title>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+
+        #show {
+            width: 300px;
+            height: 300px;
+            background-color: #ffffff;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            var oDivShow = document.getElementById("show");
+            var oSpan = document.getElementById("name");
+            var oText = document.getElementById("text");
+            var oBtn = document.getElementById("btn");
+
+            oBtn.onclick = function (){
+                oDivShow.innerHTML += oSpan.innerHTML + oText.value + "<br/>";
+                oText.innerHTML = "";
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="show"></div>
+<div class="container">
+    <span id="name">超超：</span>
+    <input id="text" type="text" placeholder=""/>
+    <input id="btn" type="button" value="发送"/>
+</div>
+</body>
+</html>
