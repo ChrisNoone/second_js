@@ -29,14 +29,17 @@
         */
         window.onload = function (){
             var oImg = document.getElementById("img1");
-
-            alert(oImg.src);
+            var onOff = true;
 
             oImg.onclick = function (){
-                if (oImg.src == "source/img/1.jpg"){
+                if (onOff){
                     oImg.src = "source/img/2.jpg";
+                    onOff = false;
+                } else {
+                    oImg.src = "source/img/1.jpg";
+                    onOff = true;
                 }
-            };
+            }
         }
     </script>
 </head>
