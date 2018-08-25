@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作2</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+    <script>
+        /*
+            所有的相对路径 都别拿来做判断
+            <img> src
+            <link> href
+            <a> href
+
+            颜色值也不能拿来做判断
+            color: red #ff00ff rgb(255, 0, 0)
+
+            innerHTML 的值不能拿来做判断
+
+            表单元素的type属性值修改，IE6 IE7 IE8不支持
+
+            修改一个元素的float属性
+            * oDiv.style.float = "left";
+            * IE （oDiv.style.styleFloat = "left";）
+            * 非IE （oDiv.style.cssFloat = "left";）
+        */
+        window.onload = function (){
+            var oImg = document.getElementById("img1");
+
+            alert(oImg.src);
+
+            oImg.onclick = function (){
+                if (oImg.src == "source/img/1.jpg"){
+                    oImg.src = "source/img/2.jpg";
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+<img id="img1" src="source/img/1.jpg"/>
+</body>
+</html>

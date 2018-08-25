@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件判断</title>
+    <style>
+        input {
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            var oBtn1 = document.getElementById("btn1");
+            var oBtn2 = document.getElementById("btn2");
+            var oP1 = document.getElementById("p1");
+            var num = 16;
+
+            oBtn1.onclick =  function (){
+                if (num < 22){
+                    num ++;
+                    oP1.style.fontSize = num + "px";
+                }
+                check();
+            };
+
+            oBtn2.onclick =  function (){
+                if (num > 12){
+                    num --;
+                    oP1.style.fontSize = num + "px";
+                }
+                check();
+            };
+
+            function check(){
+                if (num >= 22){
+                    oBtn1.disabled = true;
+                }
+                else if (num <= 12){
+                    oBtn2.disabled = true;
+                }
+                else {
+                    oBtn1.disabled = false;
+                    oBtn2.disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<label for="btn1"></label>
+<input id="btn1" type="button" value="+" />
+<label for="btn2"></label>
+<input id="btn2" type="button" value="-" />
+<p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aut cumque eum fugiat fugit ipsum molestias sed. Asperiores eaque expedita pariatur quos voluptatem. A beatae ducimus, excepturi hic laboriosam tenetur.</p>
+</body>
+</html>

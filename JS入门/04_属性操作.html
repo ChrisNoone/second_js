@@ -29,6 +29,22 @@
             float: right;
             margin-left: 5px;
         }
+
+        .cred {
+            width: 260px;
+            background-color: yellow;
+            border: 20px solid gray;
+            font-family: '楷体';
+            color: red;
+        }
+
+        .cyellow {
+            width: 260px;
+            background-color: red;
+            border: 20px solid gray;
+            font-family: '楷体';
+            color: yellow;
+        }
     </style>
     <script>
         window.onload = function () {
@@ -38,6 +54,8 @@
             var oBtn = document.getElementById("btn");
             var oPlus = document.getElementById("setplus");
             var oMin = document.getElementById("setmin");
+            var oRed = document.getElementById("setred");
+            var oYellow = document.getElementById("setyellow");
             var num = 16;
 
             oBtn.onclick = function () {
@@ -46,18 +64,28 @@
             };
 
             oPlus.onclick = function () {
-                num++;
+                num ++;
                 oDivShow.style.fontSize = num + "px";
             };
 
             oMin.onclick = function () {
-                num--;
+                num --;
                 oDivShow.style.fontSize = num + "px";
+            };
+
+            oRed.onclick = function () {
+                oDivShow.className = "cred";
+            };
+
+            oYellow.onclick = function () {
+                oDivShow.className = "cyellow";
             };
         }
     /*
     *   节点发生变化后，节点事件会失效掉，需重新定义
     *   document.getElementById 查找元素属性只能找内联元素属性，找不到内嵌和外联的属性
+    *   JS中不允许“-”，font-size 写成 fontSize
+    *   class 是保留字，要用className
     * */
     </script>
 </head>
@@ -66,6 +94,8 @@
     <div class="parent">
         <input id ="setplus" type="button" value="+"/>
         <input id ="setmin" type="button" value="-"/>
+        <input id ="setred" type="button" value="红"/>
+        <input id ="setyellow" type="button" value="黄"/>
     </div>
     <div id="show"></div>
 </div>
