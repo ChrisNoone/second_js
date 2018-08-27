@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>for循环</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: lightgray;
+            line-height: 50px;
+            text-align: center;
+            color: #ffffff;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aDiv = document.getElementsByTagName("div");
+            var str = "";
+
+            for (var i = 0; i < 11; i++) {
+                str += "<div>" + (i + 1) + "</div>"
+            }
+            document.body.innerHTML = str;
+
+            for (var i = 0; i < aDiv.length; i++) {
+                if (i < 6) {
+                    aDiv[i].style.left = 10 + 50 * i + "px";
+                    aDiv[i].style.top = 10 + 50 * i + "px";
+                }
+                else {
+                    aDiv[i].style.left = 10 + 50 * i + "px";
+                    aDiv[i].style.top = 260 - 50 * (i - 5) + "px";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
