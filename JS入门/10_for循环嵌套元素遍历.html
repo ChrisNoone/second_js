@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>for循环嵌套元素遍历</title>
+    <style>
+
+    </style>
+    <script>
+        window.onload = function () {
+            oUl = document.getElementById("list");
+            aUl = oUl.getElementsByTagName("ul");
+            var len = aUl.length;
+            var aLi = [];
+
+            for (var i = 0; i < len; i++) {
+                aLi[i] = aUl[i].getElementsByTagName("li");
+            }
+
+            var lenLi = aLi.length;
+
+            for (var i = 0; i < lenLi; i++) {
+                var lenLi_son = aLi[i].length;
+                for (var j = 0; j < lenLi_son; j++) {
+                    aLi[i][j].style.color = "red";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <h4>手机</h4>
+        <ul>
+            <li>苹果</li>
+            <li>华为</li>
+            <li>三星</li>
+        </ul>
+    </li>
+    <li>
+        <h4>国家</h4>
+        <ol>
+            <li>中国</li>
+            <li>法国</li>
+            <li>美国</li>
+        </ol>
+    </li>
+    <li>
+        <h4>电脑</h4>
+        <ul>
+            <li>联想</li>
+            <li>华硕</li>
+            <li>戴尔</li>
+        </ul>
+    </li>
+    <li>
+        <h4>冰箱</h4>
+        <ul>
+            <li>格力</li>
+            <li>海尔</li>
+            <li>小米</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
