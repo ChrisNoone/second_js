@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>图片切换</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #parent {
+            border: 20px solid gray;
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+        }
+
+        span {
+            display: block;
+            width: 500px;
+            height: 50px;
+            background-color: white;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        #img {
+            width: 500px;
+            height: 333px;
+            padding: 0;
+            margin: 0;
+            background-color: lightgray;
+        }
+
+        #parent input {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            font-size: 25px;
+        }
+
+        #left_btn {
+            left: 20px;
+        }
+
+        #right_btn {
+            right: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oTitle = document.getElementById("title");
+            var oImg = document.getElementById("img");
+            var oContent = document.getElementById("content");
+            var oLeftBtn = document.getElementById("left_btn");
+            var oRightBtn = document.getElementById("right_btn");
+
+            var arrImg = ["source/img/1.jpg", "source/img/2.jpg", "source/img/3.jpg", "source/img/4.jpg", "source/img/5.jpg",];
+            var arrContent = ["一枝梅花", "一轮圆月", "花丛中的狐狸", "小松鼠好可爱", "来自狐狸的凝视"];
+            var num = 0;
+
+            function changeImg() {
+                oTitle.innerHTML = num + 1 + "/" + arrImg.length;
+                oContent.innerHTML = arrContent[num];
+                oImg.src = arrImg[num]
+            }
+
+            oLeftBtn.onclick = function () {
+                num--;
+                changeImg();
+                if (num <= 0) {
+                    oLeftBtn.disabled = true;
+                }
+                if (num < arrImg.length - 1) {
+                    oRightBtn.disabled = false;
+                }
+            };
+
+            oRightBtn.onclick = function () {
+                num++;
+                changeImg();
+                if (num > 0) {
+                    oLeftBtn.disabled = false;
+                }
+                if (num >= arrImg.length - 1) {
+                    oRightBtn.disabled = true;
+                }
+            };
+
+            changeImg();
+        }
+    </script>
+</head>
+<body>
+<div id="parent">
+    <span id="title">数量加载中...</span>
+    <img id="img" src="" />
+    <span id="content">数据正在加载中...</span>
+    <input id="left_btn" type="button" value="<" disabled />
+    <input id="right_btn" type="button" value=">" />
+</div>
+</body>
+</html>
