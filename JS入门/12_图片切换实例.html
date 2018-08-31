@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>图片切换实例</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: lightgray;
+        }
+
+        .container {
+            width: 500px;
+            height: 350px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            position: relative;
+            top: 50px;
+        }
+
+        img {
+            width: 500px;
+            height: 350px;
+        }
+
+        .container span, .container p {
+            width: 500px;
+            height: 30px;
+            background-color: rgba(153, 153, 153, 0.2);
+            color: #ffffff;
+            line-height: 30px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            margin: 0;
+        }
+
+        span {
+            top: 0;
+        }
+
+        p {
+            bottom: 0;
+        }
+
+        .container ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: 0;
+            right: -60px;
+        }
+
+        .container ul li {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+        }
+
+        .container .active {
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var arrImg = ["source/img/1.jpg", "source/img/2.jpg", "source/img/3.jpg", "source/img/4.jpg", "source/img/5.jpg"];
+            var arrContent = ["1.樱花", "2.圆月", "3.狐狸", "4.松鼠", "5.凝视"];
+            var num = 0;
+            var len = arrImg.length;
+            var str = "";
+            var oldLi = 0;
+
+            var oImg = document.getElementsByTagName("img")[0];
+            var oSpan = document.getElementsByTagName("span")[0];
+            var oP = document.getElementsByTagName("p")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            var aLi = document.getElementsByTagName("li");
+
+            /* 页面初始化 */
+            for (var i = 0; i < len; i++) {
+                str += "<li></li>";
+            }
+            oUl.innerHTML = str;
+            for (var j = 0; j < len; j++) {
+                aLi[j].style.backgroundImage = "url('" + arrImg[j] + "')";
+                aLi[j].style.backgroundSize = "auto 50px";
+                aLi[j].style.backgroundRepeat = "no-repeat";
+            }
+            change();
+
+            function change() {
+                oImg.src = arrImg[num];
+                oSpan.innerHTML = 1 + num + "/" + len;
+                oP.innerHTML = arrContent[num];
+                aLi[num].className = "active";
+            }
+
+            for (var n = 0; n < len; n++) {
+                aLi[n].index = n;
+                aLi[n].onclick = function () {
+                    num = this.index;
+                    change();
+                    aLi[oldLi].className = "";
+                    oldLi = num;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <img src=""/>
+    <span>数量加载中...</span>
+    <p>内容加载中...</p>
+    <ul>
+    </ul>
+</div>
+</body>
+</html>
