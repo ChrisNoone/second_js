@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>qq列表效果实例</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #list {
+            width: 200px;
+            margin: 0 auto;
+            padding: 0;
+            border: 1px solid black;
+        }
+
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .lis ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list h4 {
+            margin: 0;
+            padding: 0;
+            background-color: lightskyblue;
+            text-indent: 20px;
+            border-bottom: 1px solid black;
+        }
+
+        .lis ul li {
+            border-bottom: 1px solid black;
+        }
+
+        .sel {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById("list");
+            var aH4 = document.getElementsByTagName("h4");
+            var aUl = oUl.getElementsByTagName("ul");
+            var arrLi = [];
+            var oOddLi = "";
+
+            for (var i = 0; i < aH4.length; i++) {
+                aUl[i].style.display = "none";
+            }
+
+            for (var i = 0; i < aH4.length; i++) {
+                aH4[i].index = i;
+                aH4[i].onclick = function () {
+                    if (aUl[this.index].style.display === "none") {
+                        for (var j=0; j < aH4.length; j++) {
+                            aUl[j].style.display = "none";
+                        }
+                        aUl[this.index].style.display = "block";
+                    }else {
+                        aUl[this.index].style.display = "none";
+                        if (oOddLi != "") {
+                            oOddLi.className = "";
+                        }
+                    }
+                }
+            }
+
+            for (var i = 0;i < aUl.length; i++) {
+                a = aUl[i].getElementsByTagName("li");
+                for (var j = 0;j < a.length; j++) {
+                    arrLi.push(a[j]);
+                }
+            }
+
+            for (var i = 0;i < arrLi.length; i++) {
+                arrLi[i].onclick = function () {
+                        oOddLi.className = "";
+                        this.className = "sel";
+                        oOddLi = this;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li class="lis">
+        <h4>我的好友</h4>
+        <ul>
+            <li>雪诺</li>
+            <li>提利昂</li>
+            <li>丹妮丝</li>
+        </ul>
+    </li>
+    <li class="lis">
+        <h4>企业好友</h4>
+        <ul>
+            <li>瓦里斯</li>
+            <li>戴佛斯</li>
+            <li>布蕾妮</li>
+        </ul>
+    </li>
+    <li class="lis">
+        <h4>黑名单</h4>
+        <ul>
+            <li>小剥皮</li>
+            <li>瑟曦</li>
+            <li>培提尔</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
