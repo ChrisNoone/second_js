@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>数据类型Number2</title>
+    <style></style>
+    <script>
+        window.onload = function () {
+            var arr = ['100px', 'abc' - 6, [], -98765, 34, -2, 0, '300', , function () {
+                alert(1);
+            }, null, document, [], true, '200px' - 3, '23.45元', 5, Number('abc'), function () {
+                alert(3);
+            }];
+            aInp = document.getElementsByTagName("input");
+
+            aInp[0].onclick = function () {
+                var tmp = '';
+                for (var i = 0; i < arr.length; i++) {
+                    if (typeof (arr[i]) === "number") {		// 先找出是数字类型的数据
+                        if (!isNaN(arr[i])) {		// 再找出非NaN的数字类型数据，即数字
+                            tmp += arr[i] + ' ';
+                        }
+                    }
+                }
+                alert(tmp);
+            };
+
+            aInp[1].onclick = function () {
+                var tmp = '';
+                for (var i = 0; i < arr.length; i++) {
+                    if (!isNaN(parseInt(arr[i]))) {
+                        if (parseInt(arr[i]) === parseFloat(arr[i])) {
+                            tmp += arr[i] + ' ';
+                        }
+                    }
+                }
+                alert(tmp);
+            };
+
+            aInp[2].onclick = function () {
+                var tmp = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (!isNaN(parseInt(arr[i]))) {
+                        if (parseInt(arr[i]) === parseFloat(arr[i])) {
+                            tmp.push(parseInt(arr[i]));
+                        }
+                    }
+                }
+                var max = tmp[0];
+                for (var j = 0; j < tmp.length - 1; j++) {
+                    if (tmp[j] > max) {
+                        max = tmp[j];
+                    }
+                }
+                alert(max);
+            };
+
+            aInp[3].onclick = function () {
+                var tmp = '';
+                for (var i = 0; i < arr.length; i++) {
+                    if (typeof (arr[i]) === "number") {		// 先找出是数字类型的数据
+                        if (isNaN(arr[i])) {		// 再找出NaN
+                            tmp += i + ' ';
+                        }
+                    }
+                }
+                alert(tmp);
+            }
+        }
+    </script>
+</head>
+<body>
+<span>['100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function () {alert(1);}, null, document, [], true, '200px'-3, '23.45元', 5, Number('abc'), function () {alert(3);}]</span>
+<br/>
+<br/>
+<input type="button" value="数字"/>
+<input type="button" value="可转成数字"/>
+<input type="button" value="转成数字后最大值"/>
+<input type="button" value="NaN所在的位置索引"/>
+</body>
+</html>
