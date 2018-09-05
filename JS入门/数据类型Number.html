@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>NaN()应用</title>
+    <style></style>
+    <script>
+        window.onload = function () {
+            aInp = document.getElementsByTagName("input");
+            /*
+            aInp[1].onclick = function () {
+                tmp = aInp[0].value;
+                if (isNaN(tmp)) {
+                    alert(tmp + '不是个数字');
+                }else {
+                    alert(tmp + '是个数字');
+                }
+            }*/
+
+            aInp[1].onclick = function () {
+                str = aInp[0].value;
+                if (str === '') {
+                    alert("没有输入！");
+                } else if (isNaN(str)) {
+                    alert("输入的不是数字");
+                } else if (str !== Number(str).toString()) {
+                    alert("不能有0在前面");
+                } else if (parseInt(str) !== Number(str)) {
+                    alert("不能是小数");
+                } else if (str.length < 5) {
+                    alert("长度必须5 - 10");
+                } else if (str.length > 10) {
+                    alert("长度必须5 - 10");
+                } else {
+                    alert("QQ号是：" + str);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<label for="text">请输入QQ号：</label>
+<input id="text" type="text"/>
+<input type="button" value="确定"/>
+</body>
+</html>
