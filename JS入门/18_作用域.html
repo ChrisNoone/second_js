@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+    <script>
+        /*
+        alert(a);
+        var a = 1;
+        alert(a);
+        function a() {alert(2);}
+        alert(a);
+        var a = 3;
+        alert(a);
+        function a() {
+            var i = 0;
+            var j = 1;
+            var sum = i + j;
+            alert(sum);
+        }
+        alert(a);
+        */
+
+
+        var a = 1;
+        function fn() {
+            alert(a);
+           var a = 2;
+        }
+        fn();
+        alert(a);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
