@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表套列表实例</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: lightgray;
+        }
+
+        #main {
+            width: 600px;
+            height: 333px;
+            margin: 50px auto 0;
+            background-color: #FFFFFF;
+            border: 1px solid black;
+        }
+
+        #menu {
+            width:100px;
+            height: 100%;
+            float: left;
+        }
+
+        #box {
+            width: 500px;
+            height: 100%;
+            float: right;
+            position: relative;
+        }
+
+        #box > div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /*top: 0;*/
+            /*teft: 0;*/
+        }
+
+        #menu div {
+            height: 83.25px;
+            color: blue;
+            font-weight: 600;
+            line-height: 83.25px;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-size: auto 83.25px;
+        }
+
+        #flower {
+            background-image: url("source/img/flower1.jpg");
+        }
+
+        #love {
+            background-image: url("source/img/love1.jpg");
+        }
+
+        #cute {
+            background-image: url("source/img/cute1.jpg");
+        }
+
+        #others {
+            background-image: url("source/img/1.jpg");
+        }
+
+        .tab {
+            width: 500px;
+            height: 50px;
+            background-color: lightcoral;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: table;
+        }
+
+        .pic {
+            display: table-cell;
+            background-repeat: no-repeat;
+            background-size: auto auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aFlowers = ["source/img/flower1.jpg","source/img/flower2.jpg","source/img/flower3.jpg","source/img/flower4.jpg"];
+
+            var oTabF = document.getElementById("tab_f");
+            var aPicF = oTabF.getElementsByTagName("div");
+
+            for (var i = 0; i < aPicF.length; i++) {
+                aPicF[i].style.backgroundImage = "url('" + aFlowers[i] + "')";
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+    <div id="menu">
+        <div id="flower">Flower</div>
+        <div id="love">Love</div>
+        <div id="cute">Cute</div>
+        <div id="others">Others</div>
+    </div>
+    <div id="box">
+        <div id="show_f">
+            <div id="tab_f" class="tab">
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+            </div>
+        </div>
+        <div id="show_l" style="display: none;">
+            <div id="tab_l" class="tab">
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+            </div>
+        </div>
+        <div id="show_c" style="display: none;">
+            <div id="tab_c" class="tab">
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+            </div>
+        </div>
+        <div id="show_o" style="display: none;">
+            <div id="tab_o" class="tab">
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

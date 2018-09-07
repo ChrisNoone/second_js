@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>函数传参实例</title>
+    <style>
+        input {
+            padding: 0;
+            margin: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        li > input:first-child {
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            aLi = document.getElementsByTagName("li");
+            for (var i = 0; i < aLi.length; i++) {
+                count(aLi[i]);
+            }
+
+            function count(ele) {
+                var oInpS = ele.getElementsByTagName("input")[0];
+                var oStro = ele.getElementsByTagName("strong")[0];
+                var oInpA = ele.getElementsByTagName("input")[1];
+                var oEm = ele.getElementsByTagName("em")[0];
+                var oSpan = ele.getElementsByTagName("span")[0];
+
+                oInpS.onclick = function () {
+                    var num = parseInt(oStro.innerHTML);
+                    var unitPrice = parseFloat(oEm.innerHTML);
+                    var totalPrice = parseFloat(oSpan.innerHTML);
+
+                    if (num > 0) {
+                        num--;
+                        oStro.innerHTML = num;
+                        totalPrice = (unitPrice * num).toFixed(2);
+                        oSpan.innerHTML = totalPrice + "元";
+                    }
+                }
+
+                oInpA.onclick = function () {
+                    var num = parseInt(oStro.innerHTML);
+                    var unitPrice = parseFloat(oEm.innerHTML);
+                    var totalPrice = parseFloat(oSpan.innerHTML);
+
+                    num++;
+                    oStro.innerHTML = num;
+                    totalPrice = (unitPrice * num).toFixed(2);
+                    oSpan.innerHTML = totalPrice + "元";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<p>The Pursuit of Happyness</p>
+<p>Jerry Maguire</p>
+<hr>
+<ul>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>10.0元</em>
+        小计：<span>0.00元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>19.9元</em>
+        小计：<span>0.00元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>7.2元</em>
+        小计：<span>0.00元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>25.1元</em>
+        小计：<span>0.00元</span>
+    </li>
+</ul>
+</body>
+</html>
