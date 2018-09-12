@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评分实例</title>
+    <style>
+        #parent {
+            height: 20px;
+            margin-left: 20px;
+        }
+
+        #parent div {
+            width: 20px;
+            height: 20px;
+            float: left;
+            background-image: url("source/img/star.png");
+            background-repeat: no-repeat;
+            background-position: -38px 0;
+        }
+
+        span {
+            height: 20px;
+            line-height: 20px;
+            float: left;
+            margin-left: 25px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            oDiv = document.getElementById("parent");
+            aDiv = oDiv.getElementsByTagName("div");
+            oSpan = document.getElementsByTagName("span")[0];
+
+
+            for (var i = 0; i < aDiv.length; i++) {
+                aDiv[i].index = i;
+            }
+
+            for (var j = 0; j < aDiv.length; j++) {
+                aDiv[j].onmouseover = function () {
+                    mouseOver(this.index);
+                };
+
+                aDiv[j].onmouseleave = function () {
+                    mouseLeave();
+                }
+
+                // aDiv[j].onclick = function () {
+                //     click(this.index);
+                // }
+            }
+
+            function mouseOver(index) {
+                for (var i = 0; i < index + 1;i++) {
+                    aDiv[i].style.backgroundPosition = "0 0";
+                }
+
+                switch (index) {
+                    case 0:
+                        oSpan.innerHTML = "极差";
+                        break;
+                    case 1:
+                        oSpan.innerHTML = "差";
+                        break;
+                    case 2:
+                        oSpan.innerHTML = "中等";
+                        break;
+                    case 3:
+                        oSpan.innerHTML = "好";
+                        break;
+                    case 4:
+                        oSpan.innerHTML = "极好";
+                        break;
+                }
+            }
+
+            function mouseLeave() {
+                for (var i = 0; i < aDiv.length;i++) {
+                    aDiv[i].style.backgroundPosition = "-38px 0";
+                }
+
+                oSpan.innerHTML = "";
+            }
+
+            // function click(index) {
+            //     for (var i = 0; i < aDiv.length;i++) {
+            //         aDiv[i].style.backgroundPosition = "-38px 0";
+            //     }
+            //
+            //     for (var i = 0; i < index + 1;i++) {
+            //         aDiv[i].style.backgroundPosition = "0 0";
+            //     }
+            // }
+        }
+    </script>
+</head>
+<body>
+<h4>您的评论：</h4>
+<div id="parent">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <span></span>
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐列表实例</title>
+    <style>
+        body {
+            background-color: lightgray;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+            margin: 100px auto 0;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 5px black;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            height: 25px;
+            list-style: none;
+            margin-top: 2px;
+        }
+
+        .list {
+            height: 25px;
+            line-height: 25px;
+        }
+
+        input {
+            float: left;
+            margin: 6px 12px;
+        }
+
+        .list div {
+            float: left;
+            width: 131.5px;
+            height: 25px;
+            font-size: 14px;
+            line-height: 25px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var arrLi = document.getElementsByTagName("li");
+            var arrInp = document.getElementsByTagName("input");
+            var len = arrInp.length;
+            var total = 0;
+
+            // 设置颜色
+            function setColor() {
+                for (var i = 0; i < len-1; i++) {
+                    if (arrInp[i].checked) {
+                        arrLi[i].style.backgroundColor = "lightgray";
+                    }else if (i % 2) {
+                        arrLi[i].style.backgroundColor = "rgb(225, 255, 255)";
+                    }else {
+                        arrLi[i].style.backgroundColor = "#FFFFFF";
+                    }
+                }
+            }
+
+            // 颜色变成灰色
+            function changeColor(index) {
+                if (index < len - 1) {
+                    arrLi[index].style.backgroundColor = "lightgray";
+                }
+            }
+
+            function setCheck(index) {
+                if (index == len - 1){
+                    if (arrInp[index].checked) {
+                        for(var i = 0; i < len; i++) {
+                            arrInp[i].checked = true;
+                        }
+                    }else {
+                        for(var i = 0; i < len; i++) {
+                            arrInp[i].checked = false;
+                        }
+                    }
+                }
+                setColor();
+            }
+
+            for (var n = 0;n < len; n++) {
+                arrLi[n].index = n;
+                arrInp[n].index = n;
+            }
+
+            for (var i = 0; i < len; i++) {
+                arrLi[i].onmouseover = function () {
+                    changeColor(this.index);
+                }
+
+                arrLi[i].onmouseleave = function () {
+                    setColor();
+                }
+
+                arrInp[i].onclick = function () {
+                    setCheck(this.index);
+                }
+            }
+
+            setColor();
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>给我一首歌的时间</div>
+                <div>周杰伦</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>七里香</div>
+                <div>周杰伦</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>困兽之斗</div>
+                <div>周杰伦</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>美人鱼</div>
+                <div>林俊杰</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>冬天的密码</div>
+                <div>周传雄</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>布拉格广场</div>
+                <div>蔡依林</div>
+            </div>
+        </li>
+        <li>
+            <div class="list">
+                <input type="checkbox">
+                <div>全选</div>
+                <div></div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
