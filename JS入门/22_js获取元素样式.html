@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js获取元素样式</title>
+    <style>
+        div {
+            width: 100px;
+            height: 120px;
+            background-color: red;
+        }
+    </style>
+    <script src="js/noone.js"></script>
+    <script>
+        $(function () {
+            $("btn1").onclick = function () {
+                alert(getStyle($("div1"), "width"));
+            }
+        })
+    </script>
+</head>
+<body>
+<input id="btn1" type="button" value="按钮">
+<div id="div1"></div>
+</body>
+</html>
