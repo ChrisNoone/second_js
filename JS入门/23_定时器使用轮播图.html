@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器使用轮播图</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: lightgray;
+        }
+
+        #show {
+            width: 500px;
+            height: 333px;
+            margin: 50px auto 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #container {
+            width: 2500px;
+            height: 333px;
+            position: absolute;
+            left: 0;
+        }
+
+        img {
+            width: 500px;
+            height: 333px;
+            float: left;
+            margin: 0;
+        }
+    </style>
+    <script src="js/noone.js"></script>
+    <script>
+        $(function () {
+            var oCon = $("container");
+            var aImg = document.getElementsByTagName("img");
+            var len = aImg.length;
+            var num = 0;
+            var timer = null;
+
+            timer = setInterval(move, 2000);
+
+            function move() {
+                num++;
+                num%=len;
+                oCon.style.left = "-" + num * 500 + "px";
+            }
+
+            oCon.onmouseover = function () {
+                clearInterval(timer);
+            }
+
+            oCon.onmouseleave = function () {
+                timer = setInterval(move, 2000);
+            }
+        })
+    </script>
+</head>
+<body>
+    <div id="show">
+        <div id="container">
+            <img src="source/img/1.jpg" alt="" class="pic">
+            <img src="source/img/2.jpg" alt="" class="pic">
+            <img src="source/img/3.jpg" alt="" class="pic">
+            <img src="source/img/4.jpg" alt="" class="pic">
+            <img src="source/img/5.jpg" alt="" class="pic">
+        </div>
+    </div>
+</body>
+</html>
