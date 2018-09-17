@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>定时器开关函数封装</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            position: absolute;
+            left: 20px;
+            top: 50px;
+        }
+    </style>
+    <script src="js/noone.js"></script>
+    <script>
+        $(function () {
+            var oInp1 = $("inp1");
+            var oInp2 = $("inp2");
+            var oDiv = $("div1");
+
+            oInp1.onclick = function () {
+                onMove(oDiv, -12, 20);
+            };
+
+            oInp2.onclick = function () {
+                onMove(oDiv, 12, 1000);
+            };
+
+            function getStyle (obj, attr) {
+                return obj.currentStyle ? obj.currentStyle[sttr] : getComputedStyle(obj)[attr];
+            }
+
+            function onMove(obj, speed, loc) {
+                clearInterval(obj.timer);
+
+                obj.timer = setInterval(function () {
+                    var location = parseInt(getStyle(obj, "left")) + speed;
+
+                    if (speed > 0 && location >= loc) {
+                        location = loc;
+                    }else if (speed < 0 && location <= loc) {
+                        location = loc;
+                    }
+
+                    obj.style.left = location + "px";
+
+                    if (location  === loc) {
+                        clearInterval(obj.timer);
+                    }
+                }, 30);
+            }
+        })
+    </script>
+</head>
+<body>
+<input id="inp1" type="button" value="后退"/>
+<input id="inp2" type="button" value="前进"/>
+<div id="div1"></div>
+</body>
+</html>
