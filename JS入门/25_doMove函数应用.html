@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>doMove函数应用</title>
+    <script src="js/noone.js"></script>
+    <script>
+        window.onload = function () {
+            var str = "";
+            var aDiv = document.getElementsByTagName("div");
+
+            for (var i = 0; i < 20; i++) {
+                str += "<div style='width: 50px; height: 50px; background-color: lightcoral; position: absolute; top: 10px; left: " + (10+i*60) + "px;'></div>";
+            }
+            document.body.innerHTML = str;
+
+            document.onclick = function () {
+                var len = aDiv.length;
+                var num = 0;
+                if (parseInt(getStyle(aDiv[len-1], "top")) === 10) {
+                    clearInterval(timer1);
+                    var timer1 = setInterval(function () {
+                        doMove(aDiv[num], "top", 13, 600);
+                        num++;
+                        if (num === 20) {
+                            clearInterval(timer1);
+                        }
+                    }, 100);
+                }else if (parseInt(getStyle(aDiv[len-1], "top")) === 600) {
+                    clearInterval(timer2);
+                    var timer2 = setInterval(function () {
+                        doMove(aDiv[num], "top", 13, 10);
+                        num++;
+                        if (num === 20) {
+                            clearInterval(timer2);
+                        }
+                    }, 100);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

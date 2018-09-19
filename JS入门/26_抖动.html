@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抖动</title>
+    <style>
+        img {
+            position: absolute;
+            left: 500px;
+            top: 200px;
+            width: 150px;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+    <script src="js/noone.js"></script>
+    <script>
+        $(function () {
+            var Img = document.getElementsByTagName("img")[0];
+            var oDiv = document.getElementById("div1");
+
+            oDiv.onclick = function () {
+                shake(this,"left");
+            };
+
+            Img.onclick = function () {
+                var num = 10;
+                var status = true;
+                var pos = parseInt(getStyle(Img, "left"));
+                Img.timer = null;
+                clearInterval(Img.timer);
+                Img.timer = setInterval(function () {
+                    Img.style.left = pos + num + "px";
+                    status = !status;
+                    if (status) {
+                        num = -num;
+                        num -= 2;
+                        if (num < 0) {
+                            clearInterval(Img.timer);
+                        }
+                    }else {
+                        num = -num;
+                        if (num > 0) {
+                            clearInterval(Img.timer);
+                        }
+                    }
+                }, 50)
+            }
+        })
+    </script>
+</head>
+<body>
+<img src="source/img/1.jpg" alt="#">
+<div id="div1"></div>
+</body>
+</html>

@@ -21,6 +21,7 @@
             var oInp3 = $("inp3");
             var oInp4 = $("inp4");
             var oInp5 = $("inp5");
+            var oInp6 = $("inp6");
             var oDiv = $("div1");
 
             oInp1.onclick = function () {
@@ -44,11 +45,19 @@
                 alert("left: " + getStyle(oDiv, "left") + ", top: " + getStyle(oDiv, "top"));
             };
 
+            oInp6.onclick = function () {
+                onMove(oDiv, "left", 12, 800, function () {
+                    onMove(oDiv, "top", 12, 800, function () {
+                        onMove(oDiv, "left", 12, 100);
+                    });
+                });
+            };
+
             function getStyle (obj, attr) {
                 return obj.currentStyle ? obj.currentStyle[sttr] : getComputedStyle(obj)[attr];
             }
 
-            function onMove(obj, attr, speed, loc) {
+            function onMove(obj, attr, speed, loc, endFunc) {
                 speed = parseInt(getStyle(obj, attr)) < loc ? speed : -speed;
 
                 clearInterval(obj.timer);
@@ -64,6 +73,12 @@
 
                     if (location  === loc) {
                         clearInterval(obj.timer);
+
+                        // if (endFunc) {
+                        //     endFunc();
+                        // }
+
+                        endFunc && endFunc();
                     }
                 }, 30);
             }
@@ -76,6 +91,7 @@
 <input id="inp3" type="button" value="向上"/>
 <input id="inp4" type="button" value="向下"/>
 <input id="inp5" type="button" value="停止"/>
+<input id="inp6" type="button" value="自动"/>
 <div id="div1"></div>
 </body>
 </html>
