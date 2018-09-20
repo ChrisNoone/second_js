@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>doMove函数应用</title>
-    <script src="js/noone.js"></script>
+    <script src="js/chris.js"></script>
     <script>
         window.onload = function () {
             var str = "";
@@ -18,21 +18,27 @@
                 var len = aDiv.length;
                 var num = 0;
                 if (parseInt(getStyle(aDiv[len-1], "top")) === 10) {
+                    var timer1 = null;
                     clearInterval(timer1);
-                    var timer1 = setInterval(function () {
+
+                    timer1 = setInterval(function () {
                         doMove(aDiv[num], "top", 13, 600);
                         num++;
                         if (num === 20) {
                             clearInterval(timer1);
+                            timer1 = null;
                         }
                     }, 100);
                 }else if (parseInt(getStyle(aDiv[len-1], "top")) === 600) {
+                    var timer2 = null;
                     clearInterval(timer2);
-                    var timer2 = setInterval(function () {
+
+                        timer2 = setInterval(function () {
                         doMove(aDiv[num], "top", 13, 10);
                         num++;
                         if (num === 20) {
                             clearInterval(timer2);
+                            timer2 = null;
                         }
                     }, 100);
                 }

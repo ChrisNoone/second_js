@@ -27,10 +27,10 @@ function getStyle(obj, attr) {
 // 移动函数
 function doMove(obj, attr, speed, loc, endFunc) {
     speed = parseInt(getStyle(obj, attr)) < loc ? speed : -speed;
+    var timer = null;
+    clearInterval(timer);
 
-    clearInterval(obj.timer);
-
-    obj.timer = setInterval(function () {
+    timer = setInterval(function () {
         var location = parseInt(getStyle(obj, attr)) + speed;
 
         if (speed > 0 && location >= loc || speed < 0 && location <= loc) {
@@ -40,7 +40,8 @@ function doMove(obj, attr, speed, loc, endFunc) {
         obj.style[attr] = location + "px";
 
         if (location  === loc) {
-            clearInterval(obj.timer);
+            clearInterval(timer);
+            timer = null;
 
             // if (endFunc) {
             //     endFunc();
@@ -53,13 +54,14 @@ function doMove(obj, attr, speed, loc, endFunc) {
 
 // 抖动函数
 function shake(obj, attr) {
-    clearInterval(obj.shack);
-    obj.style[attr] = obj.pos + "px";
-
-    obj.pos = parseInt(getStyle(obj, attr));
-    obj.shack = null;
     var arr = [];
     var num =0;
+
+    var timer = null;
+    clearInterval(timer);
+
+    obj.style[attr] = obj.pos + "px";
+    obj.pos = parseInt(getStyle(obj, attr));
 
     for (var i = 10; i >= 0; i-=2) {
         arr.push(i, -i);
@@ -70,7 +72,27 @@ function shake(obj, attr) {
         num++;
         if (num === arr.length) {
             obj.able = true;
-            clearInterval(obj.shack);
+            clearInterval(timer);
+            timer = null;
         }
     }, 50)
+}
+
+// 调整透明度
+function opacity(obj, speed, aims) {
+    var opa = 1.0;
+    var timer = null;
+    clearInterval(timer);
+
+    timer = setInterval(function () {
+        opa -= speed;
+        if (opa <= aims) {
+            opa = 0;
+        }
+        obj.style.opacity = opa;
+        if (opa === aims) {
+            clearInterval(timer);
+            timer = null;
+        }
+    },500)
 }
