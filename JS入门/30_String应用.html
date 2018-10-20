@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>String应用</title>
+    <style>
+
+    </style>
+    <script>
+        window.onload = function () {
+            var aInp = document.getElementsByTagName("input");
+
+            aInp[1].onclick = function () {
+                var str = aInp[0].value;
+                if (detectNum(str)) {
+                    alert("全是数字");
+                }else {
+                    alert("输入有误");
+                }
+            };
+
+            aInp[2].onclick = function () {
+                var str = aInp[0].value;
+                aInp[3].value = encry(str);
+            }
+
+            aInp[4].onclick = function () {
+                var str = aInp[3].value;
+                aInp[5].value = decry(str);
+            }
+
+            // 判断是否纯数字
+            function detectNum(str) {
+                var len = str.length;
+                for (var i=0; i < len; i++) {
+                    if (str.charCodeAt(i) < 48 || str.charCodeAt(i) > 57) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // 字符串加密
+            function encry(str) {
+                var len = str.length;
+                var newStr = "";
+                for (var i=0; i < len; i++) {
+                    newStr += String.fromCharCode(str.charCodeAt(i) + len + i);
+                }
+                return newStr;
+            }
+
+            // 字符串解密
+            function decry(str) {
+                var len = str.length;
+                var newStr = "";
+                for (var i=0; i < len; i++) {
+                    newStr += String.fromCharCode(str.charCodeAt(i) - len - i);
+                }
+                return newStr;
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+<input type="button" value="提交">
+<input type="button" value="加密">
+<br>
+<input type="text">
+<input type="button" value="解密">
+<br>
+<input type="text">
+</body>
+</html>
