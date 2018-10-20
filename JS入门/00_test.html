@@ -10,7 +10,13 @@
     </style>
     <script>
         window.onload = function () {
+            function b64DecodeUnicode(str) {
+                return decodeURIComponent(atob(str).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+            }
 
+            alert(b64DecodeUnicode('iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoBAMAAADHxCMWAAAAG1BMVEXz+/4GLk18lKW3x9HV4edBYXmarrsjR2Neeo9mTJkIAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACI0lEQVRIie2Uz1PaUBDHn+ShHFkghiM/hrbHyFDhGJBRj8Z2Bo60pT+OjaMOR6Ot/tt+d18SyQ9pGTs9uYfwXrKf3e8u+55Sr/aPTf9wk9VsWzSgRbQeEXnbsL2AiG4kSt/HsrUFW4I/XS2MALazjd5uantAktgSAeT4VN0Ej+l8DdfU5Gw9Sbrqqp0L93lUqU+If+/FuxO6RKHVEOg1Y3oTqpTFjgnuk9smanyH6J9AP3cG6775UFIl2d1j8BWq8X6f+1ZXI677OvZbQuVFFkamd8I7LazP1A4hgsZjSKl2k4NYWTgkR1kP0mSLZ6IMGSd1abb9O2AZRrJEysI+2Xj24bYYsyf/02ENeuhONnYE94pgCJyayIOAR2tXcqLyS/4axDBa6xdllm5Dcpkcr/9g+qen0+hrLfEsqJkDwts96oTSE7Zf327UYQQ0EscC2cq67cyImlwAi5jLT0MFNqYE3UtGrFQA6xYe77lEjMtV1zsWuF7izk+CuNmwvQK4LR1po97h7UBNfJP/w5hojvqdp9k+yMNDMwbl6BCPGZ1/8ViGGZzEwhxcwZuPpqCq0bbqelF3aO3AzZfc7GYaLkX3RoVMW63IXYdO582TZEzBOXciIxs1Oks5meljr++yOUhOWspOR3zvzP5wW+m3RPHdlrKJmYxmHlm3kYxS/r3FM7/aeN/Adv2iCWNVh4Oi1xmnr8XwX9okeAGsrJfAr/Zf7RFJnFl4qre6RAAAAABJRU5ErkJggg=='));
         }
     </script>
 </head>
