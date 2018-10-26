@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>indexOf方法</title>
+    <style>
+        div {
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oP = document.getElementById("content");
+            var aInp = document.getElementsByTagName("input");
+            var oDiv = document.getElementById("show");
+            var str = oP.innerHTML;
+
+            aInp[1].onclick = function () {
+                var cha = aInp[0].value;
+                var num = 1;
+                var index = 0;
+                var result = "";
+
+                while(1) {
+                    index = str.indexOf(cha, index);
+                    if (index == -1) break;
+                    result += "<p>出现次数：" + num + "，索引：" + index + "</p>"
+                    num++;
+                    index++;
+                }
+
+                oDiv.innerHTML = result;
+            };
+        }
+    </script>
+</head>
+<body>
+<p id="content">大约在黎明之战两千年后，来自东方厄斯索斯大陆的安达尔人挥舞著铁制兵器，骑着战马，带着对七神的信仰穿越狭海而来。他们在艾林谷登陆，并且迅速击败了南部王国。但是他们并没能征服占有地利的北部王国。随后在维斯特洛大陆上出现了七个强大的王国：北境王国、谷地王国、河屿王国、凯岩王国、河湾王国、风暴王国和多恩王国等七个王国。之后在厄斯索斯出现一个称为瓦雷利亚帝国的力量增长，大批居住于厄斯索斯大陆洛伊拿河畔的居民成为难民，并且在他们的战士女王娜梅莉亚带领下穿过狭海，在维斯特洛最南端登陆。洛伊拿人和当地的领主莫尔斯·马泰尔结盟，征服了多恩，建成了另外一个强大的王国。</p>
+<input type="text" placeholder="请输入要查找的字符">
+<input type="button" value="搜索">
+<p>搜索结果：</p>
+<div id="show"></div>
+</body>
+</html>
