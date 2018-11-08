@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate动画</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+                $("div").animate({
+                    left: "500px",
+                    fontSize: "50px",
+                    width: "-=100px",
+                    height:"+=100px"
+                }, 3000);
+            });
+        })
+    </script>
+</head>
+<body>
+<div>animate</div>
+</body>
+</html>

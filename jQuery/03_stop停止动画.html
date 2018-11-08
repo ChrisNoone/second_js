@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stop动画</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+                $("div").animate({left: "500px", opacity: "0.2"}, 8000, function(){
+                    alert("动画提前结束");
+                });
+                $("div").animate({top: "500px", opacity: "1"}, 8000, function(){
+                    alert("动画完成");
+                });
+            });
+            $("input").click(function(){
+                $("div").stop(true, true);
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="停止">
+<div>点击开始动画</div>
+</body>
+</html>
+

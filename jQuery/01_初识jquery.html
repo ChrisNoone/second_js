@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识jquery</title>
+    <style>
+
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("p").click(function(){
+                $("div").hide("slow");
+            });
+
+            $("button").click(function(){
+                $("div").toggle(1000, function () {
+                    alert("内容又重新显示了");
+                });
+            })
+        })
+    </script>
+</head>
+<body>
+<div>div没有被隐藏</div>
+<p>这是一段内容，点击div被隐藏。</p>
+<button>显示</button>
+</body>
+</html>
